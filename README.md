@@ -1,6 +1,6 @@
 ## Performance
 
-A simple Laravel project that demonstrates how to build an inventory component using Laravel's features.
+A simple Laravel project that demonstrates how to build an media component using Laravel's features.
 
 ![Example Media Component Screenshot](art/thumbnail.png)
 

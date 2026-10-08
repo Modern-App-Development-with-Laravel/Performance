@@ -5,7 +5,7 @@ namespace Italofantone\Media\Commands;
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
-use Italofantone\Media\Actions\GenerateThumbnail;
+use Italofantone\Media\Jobs\GenerateThumbnailJob;
 use Italofantone\Media\Models\Media;
 
 #[Signature('media:generate-thumbnails')]
@@ -15,14 +15,14 @@ class GenerateThumbnailsCommand extends Command
     /**
      * Execute the console command.
      */
-    public function handle(GenerateThumbnail $action)
+    public function handle()
     {
         $start = microtime(true);
         
         $media = Media::all();
 
         foreach ($media as $item) {
-            $action->execute($item);
+            GenerateThumbnailJob::dispatch($item);
         }
 
         $duration = microtime(true) - $start;
